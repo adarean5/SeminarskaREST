@@ -30,6 +30,10 @@ namespace SeminarskaREST
         [OperationContract]
         [WebInvoke(UriTemplate = "Movie/{id}", ResponseFormat = WebMessageFormat.Json, Method = "PUT")]
         void UpdateMovie(Movie movie, string id);
+
+        [OperationContract]
+        [WebGet(UriTemplate = "Login", ResponseFormat = WebMessageFormat.Json)]
+        void Authenticate();
     }
 
     [DataContract]

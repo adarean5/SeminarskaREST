@@ -6,14 +6,45 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using System.Data.SqlClient;
+using System.ServiceModel.Web;
+using System.Net;
 
 namespace SeminarskaREST
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Movies" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this service, please select Movies.svc or Movies.svc.cs at the Solution Explorer and start debugging.
     public class Movies : IMovies
     {
         string csMovie = ConfigurationManager.ConnectionStrings["dbmoviesConnectionString"].ConnectionString;
+        private List<Tuple<string, string>> validLogins = new List<Tuple<string, string>> {
+            new Tuple<string, string>("admin", "test"),
+            new Tuple<string, string>("jernej", "strazisar"),
+            new Tuple<string, string>("klementina", "garbajs")
+        }; 
+
+        private bool AuthenticateUser()
+        {
+            WebOperationContext ctx = WebOperationContext.Current;
+            string authHeader = ctx.IncomingRequest.Headers[HttpRequestHeader.Authorization];
+            if (authHeader == null)
+                return false;
+
+            string[] loginData = authHeader.Split(':');
+            if (loginData.Length == 2 && Login(loginData[0], loginData[1]))
+                return true;
+            return false;
+        }
+
+        public bool Login(string username, string password)
+        {
+            if (validLogins.Contains(new Tuple<string, string>(username, password)) )
+                return true;
+            return false;
+        }
+
+        public void Authenticate()
+        {
+            if (!AuthenticateUser())
+                throw new FaultException("Napačno uporabniško ime ali geslo.");
+        }
 
         public List<Movie> GetMovieList()
         {
@@ -35,7 +66,7 @@ namespace SeminarskaREST
                             movieTitle = reader.GetString(1),
                             movieDesc = reader.GetString(2),
                             movieDate = reader.GetString(3),
-                            movieRating = reader.GetDouble(4)//Convert.ToInt32(reader[4])
+                            movieRating = reader.GetDouble(4)
                     });
                     }
                 }
@@ -63,7 +94,7 @@ namespace SeminarskaREST
                         movie.movieTitle = reader.GetString(1);
                         movie.movieDesc = reader.GetString(2);
                         movie.movieDate = reader.GetString(3);
-                        movie.movieRating = reader.GetDouble(4);//Convert.ToInt32(reader[4]);
+                        movie.movieRating = reader.GetDouble(4);
                     }
                 }
                 con.Close();
@@ -73,6 +104,9 @@ namespace SeminarskaREST
 
         public void AddMovie(Movie movie)
         {
+            if (!AuthenticateUser())
+                throw new FaultException("Napačno uporabniško ime ali geslo.");
+
             using (SqlConnection con = new SqlConnection(csMovie))
             {
                 con.Open();
@@ -90,6 +124,9 @@ namespace SeminarskaREST
 
         public void DeleteMovie(string id)
         {
+            if (!AuthenticateUser())
+                throw new FaultException("Napačno uporabniško ime ali geslo.");
+
             using (SqlConnection con = new SqlConnection(csMovie))
             {
                 con.Open();
@@ -103,6 +140,9 @@ namespace SeminarskaREST
 
         public void UpdateMovie(Movie movie, string id)
         {
+            if (!AuthenticateUser())
+                throw new FaultException("Napačno uporabniško ime ali geslo.");
+
             using (SqlConnection con = new SqlConnection(csMovie))
             {
                 con.Open();
