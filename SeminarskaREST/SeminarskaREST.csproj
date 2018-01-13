@@ -70,31 +70,41 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CSS\bootstrap.min.css" />
-    <Content Include="WebForms\Index.aspx" />
+    <Content Include="Dashboard.aspx" />
+    <Content Include="Index.aspx" />
     <Content Include="JS\bootstrap.min.js" />
+    <Content Include="JS\Dashboard.js" />
+    <Content Include="JS\jquery-3.2.1.min.js" />
     <Content Include="Movies.svc" />
-    <Content Include="WebForms\MovieTest.aspx" />
+    <Content Include="MovieTest.aspx" />
     <Content Include="Service1.svc" />
     <Content Include="Web.config" />
-    <Content Include="WebForms\Register.aspx" />
+    <Content Include="Register.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dashboard.aspx.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard.aspx.designer.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
     <Compile Include="IMovies.cs" />
-    <Compile Include="WebForms\Index.aspx.cs">
+    <Compile Include="Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebForms\Index.aspx.designer.cs">
+    <Compile Include="Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Movies.svc.cs">
       <DependentUpon>Movies.svc</DependentUpon>
     </Compile>
-    <Compile Include="WebForms\MovieTest.aspx.cs">
+    <Compile Include="MovieTest.aspx.cs">
       <DependentUpon>MovieTest.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebForms\MovieTest.aspx.designer.cs">
+    <Compile Include="MovieTest.aspx.designer.cs">
       <DependentUpon>MovieTest.aspx</DependentUpon>
     </Compile>
     <Compile Include="Service1.svc.cs">
@@ -102,11 +112,11 @@
     </Compile>
     <Compile Include="IService1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WebForms\Register.aspx.cs">
+    <Compile Include="Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebForms\Register.aspx.designer.cs">
+    <Compile Include="Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
