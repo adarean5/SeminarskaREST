@@ -71,8 +71,11 @@
   <ItemGroup>
     <Content Include="CSS\bootstrap.min.css" />
     <Content Include="Dashboard.aspx" />
-    <Content Include="Img\delete.png" />
+    <Content Include="Img\add.png" />
+    <Content Include="Img\cancel.png" />
     <Content Include="Img\edit.png" />
+    <Content Include="Img\save.png" />
+    <Content Include="Img\trash.png" />
     <Content Include="Index.aspx" />
     <Content Include="JS\bootstrap.min.js" />
     <Content Include="JS\Dashboard.js" />
@@ -127,6 +130,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\isMoviesRest - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\isMoviesRest - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

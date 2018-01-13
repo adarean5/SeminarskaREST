@@ -11,9 +11,14 @@
 <body>
     <div class="container">
         <form runat="server">
-            <asp:GridView ID="T_movies" runat="server" CssClass="table table-striped" AutoGenerateColumns="false">
-
-                <HeaderStyle CssClass="thead-inverse" />
+            <asp:GridView ID="T_movies" runat="server" CssClass="table table-striped" AutoGenerateColumns="false" 
+                HorizontalAlign="Center" ShowFooter="true" DataKeyNames="MovieID" ShowHeaderWhenEmpty="true"
+                OnRowCommand="AddNewMovie"
+                OnRowEditing="EditMovie" 
+                OnRowCancelingEdit="CancelEditMovie" 
+                OnRowDeleting="DeleteMovie" 
+                OnRowUpdating="UpdateMovie"
+                >
 
                 <Columns>
                     <asp:TemplateField HeaderText="Title">
@@ -45,10 +50,10 @@
                             <asp:Label Text='<%# Eval("Date") %>' runat="server"></asp:Label>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="TB_movie_date" Text='<%# Eval("Date") %>' runat="server"></asp:TextBox>
+                            <asp:TextBox ID="TB_movie_date" Text='<%# Eval("Date") %>' TextMode="Date" runat="server"></asp:TextBox>
                         </EditItemTemplate>
                         <FooterTemplate>
-                            <asp:TextBox ID="TB_movie_date_footer" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="TB_movie_date_footer" TextMode="Date" runat="server"></asp:TextBox>
                         </FooterTemplate>
                     </asp:TemplateField>
 
@@ -57,23 +62,35 @@
                             <asp:Label Text='<%# Eval("Rating") %>' runat="server"></asp:Label>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="TB_movie_rating" Text='<%# Eval("Rating") %>' runat="server"></asp:TextBox>
+                            <asp:TextBox ID="TB_movie_rating" Text='<%# Eval("Rating") %>' TextMode="Number" runat="server"></asp:TextBox>
                         </EditItemTemplate>
                         <FooterTemplate>
-                            <asp:TextBox ID="TB_movie_rating_footer" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="TB_movie_rating_footer" TextMode="Number" runat="server"></asp:TextBox>
                         </FooterTemplate>
                     </asp:TemplateField>
-
-
 
                     <asp:TemplateField>
                         <ItemTemplate>
                             <asp:ImageButton ImageUrl="./Img/edit.png" runat="server" CommandName="Edit" ToolTip="Edit" Width="20px" Height="20px" />
-                            <asp:ImageButton ImageUrl="./Img/delete.png" runat="server" CommandName="Delete" ToolTip="Delete" Width="20px" Height="20px" />
+                            <asp:ImageButton ImageUrl="./Img/trash.png" runat="server" CommandName="Delete" ToolTip="Delete" Width="20px" Height="20px" />
                         </ItemTemplate>
+                        <EditItemTemplate>
+                            <asp:ImageButton ImageUrl="./Img/save.png" runat="server" CommandName="Save" ToolTip="Save" Width="20px" Height="20px" />
+                            <asp:ImageButton ImageUrl="./Img/cancel.png" runat="server" CommandName="Cancel" ToolTip="Cancel" Width="20px" Height="20px" />
+                        </EditItemTemplate>
+                        <FooterTemplate>
+                            <asp:ImageButton ImageUrl="./Img/add.png" runat="server" CommandName="Add" ToolTip="Add" Width="20px" Height="20px" />
+                        </FooterTemplate>
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
+            
+            <br />
+            <asp:Label ID="L_movies_success" Text="" runat="server" ForeColor="Green"></asp:Label>
+
+            <br />
+            <asp:Label ID="L_movies_error" Text="" runat="server" ForeColor="Red"></asp:Label>
+
         </form>
     </div>
 

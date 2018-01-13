@@ -20,5 +20,23 @@ namespace SeminarskaREST {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView T_movies;
+        
+        /// <summary>
+        /// L_movies_success control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label L_movies_success;
+        
+        /// <summary>
+        /// L_movies_error control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label L_movies_error;
     }
 }
