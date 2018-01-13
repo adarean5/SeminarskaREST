@@ -35,9 +35,30 @@ namespace SeminarskaREST
 
         public bool Login(string username, string password)
         {
-            if (validLogins.Contains(new Tuple<string, string>(username, password)) )
-                return true;
+            SqlConnection conn = conn = new SqlConnection(csMovie);
+            conn.Open();
+
+            string query = "SELECT Password FROM [dbo].[User] WHERE Username = @username";
+            SqlCommand cmd = new SqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@username", username);
+
+            SqlDataReader result = cmd.ExecuteReader();
+
+            using (SqlDataReader reader = cmd.ExecuteReader(System.Data.CommandBehavior.SingleRow))
+            {
+                if (reader.Read())
+                {
+                    String passFromTable = reader.GetString(0);
+                    return password == passFromTable;
+                }
+            }
+            conn.Close();
             return false;
+
+
+            /*if (validLogins.Contains(new Tuple<string, string>(username, password)) )
+                return true;
+            return false;*/
         }
 
         public void Authenticate()
