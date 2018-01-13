@@ -53,7 +53,7 @@ namespace SeminarskaREST
             using (SqlConnection con = new SqlConnection(csMovie))
             {
                 con.Open();
-                string sql = "SELECT * FROM MOVIES";
+                string sql = "SELECT * FROM MOVIE";
                 SqlCommand cmd = new SqlCommand(sql, con);
 
                 using (SqlDataReader reader = cmd.ExecuteReader())
@@ -82,7 +82,7 @@ namespace SeminarskaREST
             using (SqlConnection con = new SqlConnection(csMovie))
             {
                 con.Open();
-                string sql = "SELECT * FROM Movies WHERE MovieID=@param1";
+                string sql = "SELECT * FROM Movie WHERE MovieID=@param1";
                 SqlCommand cmd = new SqlCommand(sql, con);
                 cmd.Parameters.Add(new SqlParameter("param1", id));
 
@@ -110,7 +110,7 @@ namespace SeminarskaREST
             using (SqlConnection con = new SqlConnection(csMovie))
             {
                 con.Open();
-                string sql = "INSERT INTO Movies (MovieID, MovieTitle, MovieDesc, MovieDate, MovieRating) VALUES (@0, @1, @2, @3, @4)";
+                string sql = "INSERT INTO Movie (MovieID, MovieTitle, MovieDesc, MovieDate, MovieRating) VALUES (@0, @1, @2, @3, @4)";
                 SqlCommand cmd = new SqlCommand(sql, con);
                 cmd.Parameters.Add(new SqlParameter("0", movie.id));
                 cmd.Parameters.Add(new SqlParameter("1", movie.movieTitle));
@@ -130,7 +130,7 @@ namespace SeminarskaREST
             using (SqlConnection con = new SqlConnection(csMovie))
             {
                 con.Open();
-                string sql = "DELETE FROM Movies WHERE MovieID=@param1";
+                string sql = "DELETE FROM Movie WHERE MovieID=@param1";
                 SqlCommand cmd = new SqlCommand(sql, con);
                 cmd.Parameters.Add(new SqlParameter("param1", id));
                 cmd.ExecuteNonQuery();
@@ -146,7 +146,7 @@ namespace SeminarskaREST
             using (SqlConnection con = new SqlConnection(csMovie))
             {
                 con.Open();
-                string sql = "UPDATE Movies set MovieTitle=@1, MovieDesc=@2, MovieDate=@3, MovieRating=@4 WHERE MovieID=@0";
+                string sql = "UPDATE Movie set MovieTitle=@1, MovieDesc=@2, MovieDate=@3, MovieRating=@4 WHERE MovieID=@0";
                 SqlCommand cmd = new SqlCommand(sql, con);
                 cmd.Parameters.Add(new SqlParameter("0", id));
                 cmd.Parameters.Add(new SqlParameter("1", movie.movieTitle));
