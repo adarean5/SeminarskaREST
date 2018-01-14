@@ -38,5 +38,14 @@ namespace SeminarskaREST {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label L_movies_error;
+        
+        /// <summary>
+        /// B_logout control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button B_logout;
     }
 }

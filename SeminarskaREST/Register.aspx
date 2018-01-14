@@ -27,7 +27,8 @@
                     <asp:TextBox ID="TB_password" runat="server" TextMode="Password" CssClass="form-control"></asp:TextBox>
                 </div>
 
-                <asp:Button ID="B_register" runat="server" Text="Register" CssClass="btn btn-primary col-md-12" OnClick="B_register_Click" />
+                <asp:Button ID="B_back" runat="server" Text="Back" CssClass="btn btn-default col-md-3 float-left" OnClick="B_back_Click" />
+                <asp:Button ID="B_register" runat="server" Text="Register" CssClass="btn btn-primary col-md-8 float-right" OnClick="B_register_Click" />
             </form>
         </div>
     </div>

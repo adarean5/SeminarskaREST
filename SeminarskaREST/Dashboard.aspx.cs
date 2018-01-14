@@ -2,7 +2,6 @@
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Globalization;
 using System.Web.UI.WebControls;
 
 namespace SeminarskaREST
@@ -15,7 +14,16 @@ namespace SeminarskaREST
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack)
-                PopulateTable();
+            {
+                if(Session["userId"] == null)
+                {
+                    Response.Redirect("~/Index.aspx");
+                }
+                else
+                {
+                    PopulateTable();
+                }
+            }
         }
 
         private void PopulateTable()
@@ -168,6 +176,12 @@ namespace SeminarskaREST
                 L_movies_success.Text = "";
                 L_movies_error.Text = ex.Message;
             }
+        }
+
+        protected void B_logout_Click(object sender, EventArgs e)
+        {
+            Session["userId"] = null;
+            Response.Redirect("~/Index.aspx");
         }
     }
 }

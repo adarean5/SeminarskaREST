@@ -93,6 +93,8 @@
             <br />
             <asp:Label ID="L_movies_error" Text="" runat="server" ForeColor="Red"></asp:Label>
 
+            <asp:Button ID="B_logout" runat="server" Text="Logout" CssClass="btn btn-primary" OnClick="B_logout_Click" />
+
         </form>
     </div>
 
