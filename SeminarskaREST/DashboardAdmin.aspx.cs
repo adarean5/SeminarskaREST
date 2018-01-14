@@ -182,6 +182,7 @@ namespace SeminarskaREST
         protected void B_logout_Click(object sender, EventArgs e)
         {
             Session["userId"] = null;
+            Session["userAdmin"] = null;
             Response.Redirect("~/Index.aspx");
         }
     }
