@@ -42,7 +42,7 @@ namespace SeminarskaREST
             SqlCommand cmd = new SqlCommand(query, conn);
             cmd.Parameters.AddWithValue("@username", username);
 
-            SqlDataReader result = cmd.ExecuteReader();
+            //SqlDataReader result = cmd.ExecuteReader();
 
             using (SqlDataReader reader = cmd.ExecuteReader(System.Data.CommandBehavior.SingleRow))
             {
