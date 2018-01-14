@@ -18,6 +18,7 @@
                 OnRowCancelingEdit="CancelEditMovie" 
                 OnRowDeleting="DeleteMovie" 
                 OnRowUpdating="UpdateMovie"
+                EnableViewState="true"
                 >
 
                 <Columns>
@@ -26,7 +27,7 @@
                             <asp:Label Text='<%# Eval("Title") %>' runat="server"></asp:Label>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="TB_movie_title" Text='<%# Eval("Title") %>' runat="server"></asp:TextBox>
+                            <asp:TextBox EnableViewState="true" ID="TB_movie_title" Text='<%# Eval("Title") %>' runat="server"></asp:TextBox>
                         </EditItemTemplate>
                         <FooterTemplate>
                             <asp:TextBox ID="TB_movie_title_footer" runat="server"></asp:TextBox>
@@ -38,7 +39,7 @@
                             <asp:Label Text='<%# Eval("Description") %>' runat="server"></asp:Label>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="TB_movie_description" Text='<%# Eval("Description") %>' runat="server"></asp:TextBox>
+                            <asp:TextBox EnableViewState="true" ID="TB_movie_description" Text='<%# Eval("Description") %>' runat="server"></asp:TextBox>
                         </EditItemTemplate>
                         <FooterTemplate>
                             <asp:TextBox ID="TB_movie_description_footer" runat="server"></asp:TextBox>
@@ -47,10 +48,11 @@
 
                     <asp:TemplateField HeaderText="Date">
                         <ItemTemplate>
-                            <asp:Label Text='<%# Eval("Date") %>' runat="server"></asp:Label>
+                            <asp:Label Text='<%# Eval("Date") != null ? Convert.ToDateTime(Eval("Date")).ToString("dd. MM, yyyy") : "No Date" %>' runat="server"></asp:Label>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="TB_movie_date" Text='<%# Eval("Date") %>' TextMode="Date" runat="server"></asp:TextBox>
+                            <asp:TextBox EnableViewState="true" ID="TB_movie_date" Text='<%# Eval("Date") != null ? Convert.ToDateTime(Eval("Date")).ToString("dd. MM, yyyy") : "No Date" %>' TextMode="Date" runat="server"></asp:TextBox>
+                            <asp:HiddenField ID="TB_movie_date_hidden" runat="server" />
                         </EditItemTemplate>
                         <FooterTemplate>
                             <asp:TextBox ID="TB_movie_date_footer" TextMode="Date" runat="server"></asp:TextBox>
@@ -62,7 +64,7 @@
                             <asp:Label Text='<%# Eval("Rating") %>' runat="server"></asp:Label>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="TB_movie_rating" Text='<%# Eval("Rating") %>' TextMode="Number" runat="server"></asp:TextBox>
+                            <asp:TextBox EnableViewState="true" ID="TB_movie_rating" Text='<%# Eval("Rating") %>' TextMode="Number" runat="server"></asp:TextBox>
                         </EditItemTemplate>
                         <FooterTemplate>
                             <asp:TextBox ID="TB_movie_rating_footer" TextMode="Number" runat="server"></asp:TextBox>
@@ -75,11 +77,11 @@
                             <asp:ImageButton ImageUrl="./Img/trash.png" runat="server" CommandName="Delete" ToolTip="Delete" Width="20px" Height="20px" />
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:ImageButton ImageUrl="./Img/save.png" runat="server" CommandName="Save" ToolTip="Save" Width="20px" Height="20px" />
+                            <asp:ImageButton ImageUrl="./Img/save.png" runat="server" CommandName="Update" ToolTip="Update" Width="20px" Height="20px" />
                             <asp:ImageButton ImageUrl="./Img/cancel.png" runat="server" CommandName="Cancel" ToolTip="Cancel" Width="20px" Height="20px" />
                         </EditItemTemplate>
                         <FooterTemplate>
-                            <asp:ImageButton ImageUrl="./Img/add.png" runat="server" CommandName="Add" ToolTip="Add" Width="20px" Height="20px" />
+                            <asp:ImageButton ImageUrl="./Img/add.png" runat="server" CommandName="AddNew" ToolTip="AddNew" Width="20px" Height="20px" />
                         </FooterTemplate>
                     </asp:TemplateField>
                 </Columns>
