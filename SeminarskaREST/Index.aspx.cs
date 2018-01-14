@@ -19,12 +19,13 @@ namespace SeminarskaREST
         protected void B_login_Click(object sender, EventArgs e)
         {
             string connString = ConfigurationManager.ConnectionStrings["dbmoviesConnectionString"].ConnectionString;
+            bool admin = false;
 
             using (SqlConnection conn = new SqlConnection(connString))
             {
                 conn.Open();
 
-                string query = "SELECT * FROM [dbo].[User] WHERE Username = @username AND Password = @password";
+                string query = "SELECT * FROM [dbo].[User] JOIN [dbo].[UserType] t ON [dbo].[User].UserTypeID = t.UserTypeID WHERE Username = @username AND Password = @password";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
 
@@ -45,14 +46,18 @@ namespace SeminarskaREST
                 result.Read();
 
                 int userId = result.GetInt32(result.GetOrdinal("UserID"));
+                string userType = result.GetString(result.GetOrdinal("Title"));
 
                 result.Close();
                 conn.Close();
 
+                admin = userType.Equals("Administrator");
+                Session["userAdmin"] = admin;
+                
                 Session["userId"] = userId;
             }
             
-            Response.Redirect("~/Dashboard.aspx");
+            Response.Redirect(admin ? "~/DashboardAdmin.aspx" : "~/Dashboard.aspx");
         }
 
         protected void B_register_Click(object sender, EventArgs e)

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="SeminarskaREST.Dashboard" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="DashboardAdmin.aspx.cs" Inherits="SeminarskaREST.DashboardAdmin" %>
 
 <!DOCTYPE html>
 
@@ -14,6 +14,10 @@
             <asp:GridView ID="T_movies" runat="server" CssClass="table table-striped" AutoGenerateColumns="false" 
                 HorizontalAlign="Center" ShowFooter="true" DataKeyNames="MovieID" ShowHeaderWhenEmpty="true"
                 OnRowCommand="AddNewMovie"
+                OnRowEditing="EditMovie" 
+                OnRowCancelingEdit="CancelEditMovie" 
+                OnRowDeleting="DeleteMovie" 
+                OnRowUpdating="UpdateMovie"
                 EnableViewState="true"
                 >
 
@@ -64,6 +68,20 @@
                         </EditItemTemplate>
                         <FooterTemplate>
                             <asp:TextBox ID="TB_movie_rating_footer" TextMode="Number" runat="server"></asp:TextBox>
+                        </FooterTemplate>
+                    </asp:TemplateField>
+                    
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:ImageButton ImageUrl="./Img/edit.png" runat="server" CommandName="Edit" ToolTip="Edit" Width="20px" Height="20px" />
+                            <asp:ImageButton ImageUrl="./Img/trash.png" runat="server" CommandName="Delete" ToolTip="Delete" Width="20px" Height="20px" />
+                        </ItemTemplate>
+                        <EditItemTemplate>
+                            <asp:ImageButton ImageUrl="./Img/save.png" runat="server" CommandName="Update" ToolTip="Update" Width="20px" Height="20px" />
+                            <asp:ImageButton ImageUrl="./Img/cancel.png" runat="server" CommandName="Cancel" ToolTip="Cancel" Width="20px" Height="20px" />
+                        </EditItemTemplate>
+                        <FooterTemplate>
+                            <asp:ImageButton ImageUrl="./Img/add.png" runat="server" CommandName="AddNew" ToolTip="AddNew" Width="20px" Height="20px" />
                         </FooterTemplate>
                     </asp:TemplateField>
                 </Columns>

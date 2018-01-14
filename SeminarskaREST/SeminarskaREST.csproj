@@ -71,6 +71,7 @@
   <ItemGroup>
     <Content Include="CSS\bootstrap.min.css" />
     <Content Include="Dashboard.aspx" />
+    <Content Include="DashboardAdmin.aspx" />
     <Content Include="Img\add.png" />
     <Content Include="Img\cancel.png" />
     <Content Include="Img\edit.png" />
@@ -93,6 +94,13 @@
     </Compile>
     <Compile Include="Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DashboardAdmin.aspx.cs">
+      <DependentUpon>DashboardAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DashboardAdmin.aspx.designer.cs">
+      <DependentUpon>DashboardAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="IMovies.cs" />
     <Compile Include="Index.aspx.cs">
