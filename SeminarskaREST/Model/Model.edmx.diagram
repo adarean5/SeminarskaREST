@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="75144820eeea47ff9cbfdfa2ba7a317a" Name="Diagram1">
+        <EntityTypeShape EntityType="dbmoviesModel.Book" Width="1.5" PointX="10.375" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbmoviesModel.Movie" Width="1.5" PointX="10.375" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbmoviesModel.Series" Width="1.5" PointX="7.875" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbmoviesModel.User" Width="1.5" PointX="3" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbmoviesModel.UserSeries" Width="1.5" PointX="5.5" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbmoviesModel.UserType" Width="1.5" PointX="0.5" PointY="3.25" IsExpanded="true" />
+        <AssociationConnector Association="dbmoviesModel.FK_UserSeries_Series" ManuallyRouted="false" />
+        <AssociationConnector Association="dbmoviesModel.FK_User_UserType" ManuallyRouted="false" />
+        <AssociationConnector Association="dbmoviesModel.FK_UserSeries_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

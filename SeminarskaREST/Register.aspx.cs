@@ -72,6 +72,7 @@ namespace SeminarskaREST.WebForms
                 result.Close();
 
                 Session["userId"] = userId;
+                Session["userAdmin"] = false;
             }
 
             Response.Redirect("~/Dashboard.aspx");
