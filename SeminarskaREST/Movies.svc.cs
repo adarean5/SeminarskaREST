@@ -131,9 +131,9 @@ namespace SeminarskaREST
             using (SqlConnection con = new SqlConnection(csMovie))
             {
                 con.Open();
-                string sql = "INSERT INTO Movie (MovieID, MovieTitle, MovieDesc, MovieDate, MovieRating) VALUES (@0, @1, @2, @3, @4)";
+                string sql = "INSERT INTO Movie (MovieTitle, MovieDesc, MovieDate, MovieRating) VALUES (@1, @2, @3, @4)";
                 SqlCommand cmd = new SqlCommand(sql, con);
-                cmd.Parameters.Add(new SqlParameter("0", movie.id));
+                //cmd.Parameters.Add(new SqlParameter("0", movie.id));
                 cmd.Parameters.Add(new SqlParameter("1", movie.movieTitle));
                 cmd.Parameters.Add(new SqlParameter("2", movie.movieDesc));
                 cmd.Parameters.Add(new SqlParameter("3", movie.movieDate));
